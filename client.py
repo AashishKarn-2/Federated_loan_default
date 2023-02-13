@@ -10,15 +10,17 @@ from sklearn.metrics import log_loss
 import utils
 
 if __name__ == "__main__":
-
+    data =  pd.read_csv("Fin.csv")
+    X = data.drop("Defaulted?" , axis = 1)
+    Y = data["Defaulted?"]
     from sklearn.model_selection import train_test_split
-
+     
 
     X_train , X_test , y_train , y_test = train_test_split(X , Y , test_size = 0.3)
 
 
     partition_id = np.random.choice(2)
-    (X_train, y_train) = partition(x_train, y_train, 2)[partition_id]
+    (X_train, y_train) = utils.partition(X_train, y_train, 2)[partition_id]
 
     # Create LogisticRegression Model
     model = LogisticRegression(
