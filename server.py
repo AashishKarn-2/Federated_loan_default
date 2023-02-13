@@ -17,6 +17,9 @@ def get_evaluate_fn(model: LogisticRegression):
 
     # Load test data here to avoid the overhead of doing it in `evaluate` itself
     data = pd.read_csv("Fin.csv")
+    data.drop(["Index"] , inplace =  True , axis = 1)
+    X = data.drop("Defaulted?" , axis = 1)
+    Y = data["Defaulted?"]
     X_train , X_test , y_train , y_test = train_test_split(X , Y , test_size = 0.3)
 
 
