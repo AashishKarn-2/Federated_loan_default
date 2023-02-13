@@ -17,8 +17,8 @@ if __name__ == "__main__":
     X_train , X_test , y_train , y_test = train_test_split(X , Y , test_size = 0.3)
 
 
-    partition_id = np.random.choice(10)
-    (X_train, y_train) = partition(x_train, y_train, 10)[partition_id]
+    partition_id = np.random.choice(2)
+    (X_train, y_train) = partition(x_train, y_train, 2)[partition_id]
 
     # Create LogisticRegression Model
     model = LogisticRegression(
