@@ -42,8 +42,8 @@ def set_initial_params(model: LogisticRegression):
     information.
     """
     n_classes = 2  # MNIST has 10 classes
-    n_features = 784  # Number of features in dataset
-    model.classes_ = np.array([i for i in range(10)])
+    n_features = 3  # Number of features in dataset
+    model.classes_ = np.array([i for i in range(2)])
 
     model.coef_ = np.zeros((n_classes, n_features))
     if model.fit_intercept:

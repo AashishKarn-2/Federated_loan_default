@@ -1,6 +1,8 @@
 import warnings
 import flwr as fl
 import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import log_loss
@@ -8,12 +10,15 @@ from sklearn.metrics import log_loss
 import utils
 
 if __name__ == "__main__":
-    # Load MNIST dataset from https://www.openml.org/d/554
-    (X_train, y_train), (X_test, y_test) = utils.load_mnist()
 
-    # Split train set into 10 partitions and randomly use one for training.
+    from sklearn.model_selection import train_test_split
+
+
+    X_train , X_test , y_train , y_test = train_test_split(X , Y , test_size = 0.3)
+
+
     partition_id = np.random.choice(10)
-    (X_train, y_train) = utils.partition(X_train, y_train, 10)[partition_id]
+    (X_train, y_train) = partition(x_train, y_train, 10)[partition_id]
 
     # Create LogisticRegression Model
     model = LogisticRegression(
