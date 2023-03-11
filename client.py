@@ -3,6 +3,7 @@ import flwr as fl
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import grpc
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import log_loss
@@ -53,6 +54,9 @@ if __name__ == "__main__":
             loss = log_loss(y_test, model.predict_proba(X_test))
             accuracy = model.score(X_test, y_test)
             return loss, len(X_test), {"accuracy": accuracy}
-
+    
+    server = "192.168.179.237:8080"
+    channel = grpc.insecure_channel(server)
     # Start Flower client
-    fl.client.start_numpy_client(server_address="0.0.0.0:8080", client=MnistClient())
+    fl.client.start_numpy_client(server_address=server, client=MnistClient())
+    print("Dipesh")
