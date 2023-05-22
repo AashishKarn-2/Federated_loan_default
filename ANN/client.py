@@ -63,4 +63,4 @@ class BankDefault(fl.client.NumPyClient):
 
 
 # Start Flower client
-fl.client.start_numpy_client(server_address="0.0.0.0:8080", client=BankDefault())
+fl.client.start_numpy_client(server_address="0.0.0.0:8081", client=BankDefault())
