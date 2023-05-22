@@ -55,7 +55,7 @@ if __name__ == "__main__":
             accuracy = model.score(X_test, y_test)
             return loss, len(X_test), {"accuracy": accuracy}
     
-    server = "192.168.179.237:8080"
+    server = "0.0.0.0:8080"
     channel = grpc.insecure_channel(server)
     # Start Flower client
     fl.client.start_numpy_client(server_address=server, client=MnistClient())
